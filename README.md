@@ -8,6 +8,34 @@ Bikeshare project
 
 ### Description
 Using Datasets files for a bike share system provider for many major cities in the United States, to uncover bike share usage patterns. By compare the system usage between three large cities: Chicago, New York City, and Washington, DC.
+The result show variety of descriptive statistics. 
+
+#1 Popular times of travel:
+
+most common month
+most common day of week
+most common hour of day
+
+#2 Popular stations and trip:
+
+most common start station
+most common end station
+most common trip from start to end 
+
+#3 Trip duration:
+
+total travel time
+average travel time
+
+#4 User info:
+
+counts of each user type
+counts of each gender (only available for NYC and Chicago)
+earliest, most recent, most common year of birth (only available for NYC and Chicago)
+
+
+
+
 
 ### Files used
 Dataset files:
