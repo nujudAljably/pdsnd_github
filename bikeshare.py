@@ -11,7 +11,8 @@ month_list=['January', 'February', 'March' , 'April', 'May', 'June', 'None']
 city_name=['chicago', 'new york city', 'washington']
 day_name=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday','None']
 
-def get_filters():
+
+def get_filters(): 
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -20,36 +21,25 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
-    
-    while True:
-        city = input(" Type city name :  \n (chicago, new york city, washington)").lower()
-        if city in city_name:
-            break
-        else:
-            print ("Sorry, Type city name agine ")
-            continue 
-   # get user input for month (all, january, february, ... , june)
-    while True:
-        month = input(" Type month name :  \n(January, February, March , April, May, June, or 'none' to apply no month filter  \n)").title()
-        if month in month_list:
-            break
-        else:
-            print ("Sorry, Type month name agine ")
-            continue 
 
+    print('Hi there! Let\'s explore some US bikeshare data!')
+
+    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    valid_cities = CITY_DATA.keys()
+    prompt_cities = 'Please choose one of the 3 cities (chicago, new york city, washington): '
+    city = check_data_entry(prompt_cities, valid_cities)
+
+
+    # get user input for month (all, january, february, ... , june)
+    valid_months = ['all','january','february','march','april','may','june']
+    prompt_month = 'Please choose a month (all, january, february, ... , june): '
+    month = check_data_entry(prompt_month, valid_months)
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    while True:
-        day = input(" Type day name :  \n(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday) or 'none' to apply no day filter\n").title()
-        
-        if day in day_name:
-            break
-        else:
-            print ("Sorry, Type day name agine ")
-            continue 
+    valid_days = ['all','monday','tuesday','wednesday','thursday','friday','saturday', 'sunday']
+    prompt_day = 'Please choose a day (all, monday, tuesday, ... sunday): '
+    day = check_data_entry(prompt_day, valid_days)
+
 
     print('-'*40)
     return city, month, day
@@ -201,17 +191,12 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        view_data = input("Would you like to view 5 rows of individual trip data? Enter yes or no?\n")
-        start_loc = 0
-        print(df.head(start_loc))
         while True:
-            if view_data.lower() != 'no':
-                print(df.iloc[start_loc:start_loc+5])
-                start_loc += 5
-                view_data = input("Do you wish to continue?: ").lower()
-                continue
-            else :
-                break
+        display_data = input('\nWould you like to see 5 lines of raw data? Enter yes or no.\n')
+        if display_data.lower() != 'yes':
+            break
+        print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        i+=5
         
         
         restart = input('\nWould you like to restart? Enter yes or no.\n')
