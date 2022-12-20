@@ -191,17 +191,12 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         
-        view_data = input("Would you like to view 5 rows of individual trip data? Enter yes or no?\n")
-        start_loc = 0
-        print(df.head(start_loc))
         while True:
-            if view_data.lower() != 'no':
-                print(df.iloc[start_loc:start_loc+5])
-                start_loc += 5
-                view_data = input("Do you wish to continue?: ").lower()
-                continue
-            else :
-                break
+        display_data = input('\nWould you like to see 5 lines of raw data? Enter yes or no.\n')
+        if display_data.lower() != 'yes':
+            break
+        print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        i+=5
         
         
         restart = input('\nWould you like to restart? Enter yes or no.\n')
